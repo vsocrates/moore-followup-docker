@@ -1,0 +1,13 @@
+# To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
+pip
+setuptools
+wheel
+Flask==2.2.2
+flask-cors
+gunicorn==20.1.0
+openpyxl
+torch==1.9.0
+transformers==4.20.1
+spacy==3.2.3
+spacy-transformers==1.1.7
+pandas

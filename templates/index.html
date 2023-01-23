@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to the Yale CT ILN Followup Model {% endblock %}</h1>
+        <div class='intro'>
+          <p>Using Yale-New Haven Health data, we trained a transformer-based model (RoBERTa-large) to predict whether or not a patient in the ED will get a followup from an incidental lung nodule finding.</p>
+          <p>Please enter the path of your data on the host machine below. (Remember, you must have included the folder containing the dataset as a volume in docker, like so:  <a href="https://docs.docker.com/engine/reference/commandline/run/#-mount-volume--v---read-only">Mount Docker Volume</a> </p>
+        </div>
+        <div>
+
+          <form method="post">
+            <label for="filepath">Path to CT Reports:</label>
+            <input type="text" id="filepath" name="filepath",
+            placeholder="/path/to/file",
+            value="{{ request.form['filepath'] }}"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+{% endblock %}

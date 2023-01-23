@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to the Yale CT ILN Followup Model {% endblock %}</h1>
+        <div class='intro'>
+          <p>Here's the current progress of your job. (You can only run one at a time)</p>
+        </div>
+        <div>
+            {% if input_file %}
+                <h2>Filename:</h2>
+                <h3>{{ input_file }}</h3>
+                <h2>Progress:</h2>
+                <h3>{{ progress }}</h3>
+                <div class="ldBar label-center"
+                data-preset="circle"
+                data-value="{{ progress }}"
+                ></div>
+            {% else %}
+                <h1>We're missing either the input file or the progress</h1>
+            {% endif %}            
+        </div>
+
+    <script type="text/javascript">
+        setTimeout(function(){ location.reload(); }, 10000);
+    </script>    
+{% endblock %}

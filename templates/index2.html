@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskBlog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+</head>
+<body>
+   <h1>Welcome to the Yale CT ILN Followup Model</h1>
+   <p>Using Yale-New Haven Health data, we trained a transformer-based model (RoBERTa-large) to predict whether or not a patient in the ED will get a followup from an incidental lung nodule finding.</p>
+   <p>Please enter the path of your data on the host machine below. (Remember, you must have included the folder containing the dataset as a volume in docker, like so:  <a href="https://docs.docker.com/engine/reference/commandline/run/#-mount-volume--v---read-only">Mount Docker Volume</a> </p>
+
+   <form action="/deploy.py">
+    <label for="filepath">Path to CT Reports:</label>
+    <input type="text" id="filepath" name="filepath"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  
+</body>
+
+
+</html>

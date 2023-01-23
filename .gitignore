@@ -604,3 +604,8 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,python,visualstudio
 .vscode/
+
+######## Custom
+
+# ignore any wheels for private installation
+*.whl
