@@ -20,4 +20,4 @@ In order to use this model:
 
 ![Container Settings](https://github.com/vsocrates/moore-followup-docker/blob/main/images/container-settings.png)
 
-Our model is located on [Docker Hub](https://hub.docker.com/repository/docker/vsocrates/moore/general) with further details
+Our model is located on [Docker Hub](https://hub.docker.com/repository/docker/vsocrates/moore/general) with further details and our model training code is located at https://github.com/vsocrates/moore-followup. 
