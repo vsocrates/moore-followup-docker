@@ -21,8 +21,15 @@ class Followup_PredictionThread(threading.Thread):
         self.verbosiy = verbosiy
         self.progress = 0
         self.batch_size = batch_size
+        self.has_data = False
 
-        self.data_in = self.read_file()
+        try:
+            self.data_in = self.read_file()
+        except FileNotFoundError:
+            print(f"The file at path {self.input_file} cannot be found!")
+            self.has_data = False
+        else:
+            self.has_data = True
 
         super().__init__()
 

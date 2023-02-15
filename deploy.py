@@ -31,10 +31,14 @@ def input_fp():
             flash('Path to data is required!')
         else:
             thread_id = str(uuid.uuid1())
-            exporting_threads[thread_id] = Followup_PredictionThread(fpath)
-            exporting_threads[thread_id].start()
-
-            return redirect(url_for('progress', thread_id=thread_id))
+            thread = Followup_PredictionThread(fpath)
+            if thread.has_data:
+                exporting_threads[thread_id] = thread
+                exporting_threads[thread_id].start()
+                return redirect(url_for('progress', thread_id=thread_id))
+            else:
+                flash('Path to data is required!')
+                return render_template('index.html')            
 
     return render_template('index.html')
 
