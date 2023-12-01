@@ -37,7 +37,61 @@
             font-family: 'varela round';
             font-size: 1.5em;
             font-weight: 750;
-        }        
+        }    
+
+                    
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            }
+
+            .alert h4 {
+            margin-top: 0;
+            color: inherit;
+            }
+
+            .alert .alert-link {
+            font-weight: bold;
+            }
+
+            .alert > p,
+            .alert > ul {
+            margin-bottom: 0;
+            }
+
+            .alert > p + p {
+            margin-top: 5px;
+            }
+
+            .alert-dismissable,
+            .alert-dismissible {
+            padding-right: 35px;
+            }
+
+            .alert-dismissable .close,
+            .alert-dismissible .close {
+            position: relative;
+            top: -2px;
+            right: -21px;
+            color: inherit;
+            }
+
+
+            .alert-danger {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            color: #a94442;
+            }
+
+            .alert-danger hr {
+            border-top-color: #e4b9c0;
+            }
+
+            .alert-danger .alert-link {
+            color: #843534;
+            }        
 
     </style>
 </head>
@@ -47,6 +101,17 @@
         <a href="#">About</a>
     </nav>
     <hr>
+    <div class="flashes">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>        
+          {% endfor %}
+        {% endif %}
+      {% endwith %}        
+    </div>
     <div class="content">
         {% block content %} {% endblock %}
     </div>

@@ -8,12 +8,15 @@
         </div>
         <div>
 
-          <form method="post">
-            <label for="filepath">Path to CT Reports:</label>
-            <input type="text" id="filepath" name="filepath",
-            placeholder="/path/to/file",
-            value="{{ request.form['filepath'] }}"><br><br>
-            <button type="submit">Submit</button>
+          <form class="pure-form" method="post">
+            <fieldset class="pure-group">
+              <label for="filepath">Path to CT Reports:</label>
+              <input class="pure-input-1-2" type="text" id="filepath" name="filepath",
+              placeholder="data/file.csv",
+              value="{{ request.form['filepath'] }}",
+              required="">
+            </fieldset>
+            <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Submit</button>
         </form>
         </div>
 {% endblock %}
