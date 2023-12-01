@@ -2,12 +2,19 @@
 pip
 setuptools
 wheel
+Werkzeug==2.2.2
 Flask==2.2.2
 flask-cors
-gunicorn==20.1.0
+# gunicorn==20.1.0
 openpyxl
-torch==1.9.0
+torch==1.13.0
+typing_extensions<4.6.0
 transformers==4.20.1
-spacy==3.2.3
-spacy-transformers==1.1.7
+spacy==3.7.2
+spacy-transformers==1.3.3
 pandas
+# flask-executor
+Flask-Caching
+jobtastic
+celery
+redis

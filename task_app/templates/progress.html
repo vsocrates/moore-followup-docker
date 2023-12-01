@@ -9,12 +9,27 @@
             {% if input_file %}
                 <h2>Filename:</h2>
                 <h3>{{ input_file }}</h3>
-                <h2>Progress:</h2>
-                <h3>{{ progress }}</h3>
+                <h2>Cancer Progress:</h2>
+                <h3>{{ cancer_progress }}</h3>
                 <div class="ldBar label-center"
                 data-preset="circle"
-                data-value="{{ progress }}"
+                data-value="{{ cancer_progress }}"
                 ></div>
+
+                <h2>Nodule Progress:</h2>
+                <h3>{{ nodule_progress }}</h3>
+                <div class="ldBar label-center"
+                data-preset="circle"
+                data-value="{{ nodule_progress }}"
+                ></div>
+
+                <h2>Followup Progress:</h2>
+                <h3>{{ followup_progress }}</h3>
+                <div class="ldBar label-center"
+                data-preset="circle"
+                data-value="{{ followup_progress }}"
+                ></div>
+
             {% else %}
                 <h1>We're missing either the input file or the progress</h1>
             {% endif %}            
