@@ -64,6 +64,13 @@ def input_fp():
             print('Path to data is required!')
             flash('Path to data is required!', "error")
         else:
+            if executor.futures.done('predictCT'):
+                _ = executor.futures.pop('predictCT')
+                cache.set("has_data", False)
+                cache.set("cancer_progress", 0)
+                cache.set("nodule_progress", 0)
+                cache.set("followup_progress", 0)
+
             try:
                 data_in = read_file(fpath)
             except FileNotFoundError:
@@ -73,25 +80,29 @@ def input_fp():
                 return render_template('index.html')            
             else:
                 cache.set('has_data', True)
-                thread_id = str(uuid.uuid1())
-                # executor.submit(predict_CT, fpath)
+                # thread_id = str(uuid.uuid1())
+
                 if len(executor.futures) > 0:
                     flash("You're already running something. Please wait for it to finish until running another!", "warning")
-                    _ = executor.futures.pop('predictCT')
                     return redirect(url_for('input_fp'))
                 
                 future = predict_CT.submit_stored('predictCT', fpath, data_in)
                 cache.set('input_file', fpath)
-                return redirect(url_for('progress', thread_id=thread_id))
+                return redirect(url_for('progress'))
 
     return render_template('index.html')
 
 
-@app.route('/progress/<string:thread_id>', methods=['GET'])
-def progress(thread_id):
+@app.route('/progress', methods=['GET'])
+def progress():
 
     if executor.futures.exception('predictCT'):
         flash('Something went wrong, please resubmit your file!', "error")
+        cache.set("has_data", False)
+        cache.set("cancer_progress", 0)
+        cache.set("nodule_progress", 0)
+        cache.set("followup_progress", 0)
+
         _ = executor.futures.pop('predictCT')
         return redirect(url_for('input_fp'))
     else:
@@ -99,8 +110,7 @@ def progress(thread_id):
             cancer_progress=cache.get('cancer_progress'), 
             nodule_progress=cache.get('nodule_progress'), 
             followup_progress=cache.get('followup_progress'),         
-            input_file=cache.get('input_file'),
-            thread_id = thread_id)
+            input_file=cache.get('input_file'))
 
 
 
@@ -400,6 +410,3 @@ def predict_CT(input_file, data_in, batch_size=50, gpu=False, verbosity=10):
         # handle the exception
         print("An exception occurred:", type(error).__name__, "–", error) # An exception occurred: ZeroDivisionError – division by zero
         raise error
-    # except:
-    #     print("An error occurred")
-    #     raise Exception("HMMM")
