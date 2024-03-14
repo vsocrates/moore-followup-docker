@@ -609,3 +609,5 @@ FodyWeavers.xsd
 
 # ignore any wheels for private installation
 *.whl
+*.pem
+*.ppk
