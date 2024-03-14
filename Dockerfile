@@ -34,12 +34,12 @@ RUN python -m spacy download en_core_web_trf-3.2.0 --direct
 
 COPY en_moore_followup-0.0.0-py3-none-any.whl .
 COPY en_moore_nodule-0.0.0-py3-none-any.whl .
-COPY en_moore_cancer-0.0.0-py3-none-any.whl .
+COPY en_moore_cancer-1.0.0-py3-none-any.whl .
 
 # copy over the package and install that? 
 RUN pip install en_moore_followup-0.0.0-py3-none-any.whl
 RUN pip install en_moore_nodule-0.0.0-py3-none-any.whl
-RUN pip install en_moore_cancer-0.0.0-py3-none-any.whl
+RUN pip install en_moore_cancer-1.0.0-py3-none-any.whl
 
 WORKDIR /app/data
 WORKDIR /app
