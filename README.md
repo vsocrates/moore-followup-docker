@@ -1,4 +1,4 @@
-# Yale Moore CT ILN Follow-up — Deployable App
+# Yale Moore CT ILN Follow-up — Docker App
 
 A self-contained Docker application that reads free-text ED chest CT reports and flags patients with an **incidental lung nodule (ILN)** requiring follow-up. It packages a three-stage NLP pipeline behind a simple web UI so a non-technical user at any hospital can run it on their own data — without that data ever leaving their network.
 
