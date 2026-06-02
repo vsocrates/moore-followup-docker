@@ -66,9 +66,10 @@ Python 3.9 · Flask + Gunicorn · Flask-Executor · Flask-Caching · spaCy + spa
 
 ## Known limitations
 
+- Task polling and refresh uses Flask-Executor to write progress into a filesystem cache that the status page polls. Can be made more robust with Celery / Redis
 - Single-health-system training data (YNHH, 2014–2021); cross-site validation is the honest next step, and the static model needs monitoring for drift.
 - Batch/CPU throughput is the first scaling wall; high volume would want a job queue with horizontal workers & multiple CPUs.
-- Container ships with debug mode and an in-repo secret — fine for a single-user local deployment, but secrets should be externalized and debug disabled before any multi-user use.
+
 
 ## Citation
 
