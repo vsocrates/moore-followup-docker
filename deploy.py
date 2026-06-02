@@ -30,14 +30,14 @@ from spacy.language import Language
 app = Flask(__name__)
 CORS(app)
 
-SECRET_KEY = "b98ce042c833cf76dc0021903e83e18ac132b7a483991049"
+SECRET_KEY = os.environ.get("SECRET_KEY", os.urandom(24).hex())
 
 app.config['CACHE_TYPE'] = 'FileSystemCache' 
 app.config['CACHE_DIR'] = 'cache' # path to your server cache folder
 app.config['CACHE_THRESHOLD'] = 100000 # number of 'files' before start auto-delete
 app.config["CACHE_DEFAULT_TIMEOUT"] = 0
 app.config['SECRET_KEY'] = SECRET_KEY
-app.config["DEBUG"] = True
+app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
 app.config['EXECUTOR_PROPAGATE_EXCEPTIONS'] = False
 
 executor = Executor(app)
